@@ -5,6 +5,8 @@ SPDX-License-Identifier: Apache-2.0
 
 # AI Catalog Go SDK
 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Agent-Card/ai-catalog-go/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Agent-Card/ai-catalog-go)
+
 A Go toolkit for consuming, validating, and analyzing [AI Catalog](https://ai-catalog.io/) documents — the typed, nestable JSON format for making heterogeneous AI artifacts (MCP servers, A2A agents, datasets, model cards, nested catalogs, …) discoverable.
 
 The SDK is a faithful implementation of the [AI Catalog specification](https://ai-catalog.io/spec/).
