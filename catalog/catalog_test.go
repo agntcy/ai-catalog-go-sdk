@@ -66,7 +66,7 @@ func TestParse_Valid(t *testing.T) {
 		t.Fatalf("len(Entries) = %d, want %d", len(c.Entries), fixtureEntries)
 	}
 
-	if c.Entries[0].Type != "application/a2a-agent-card+json" {
+	if c.Entries[0].Type != MediaTypeA2AAgentCard {
 		t.Errorf("entry[0].Type = %q", c.Entries[0].Type)
 	}
 }
@@ -122,7 +122,7 @@ func TestToJSON_RoundTrip(t *testing.T) {
 		t.Errorf("compact JSON missing specVersion: %s", data)
 	}
 
-	if !strings.Contains(string(data), `"type":"application/a2a-agent-card+json"`) {
+	if !strings.Contains(string(data), `"type":"`+MediaTypeA2AAgentCard+`"`) {
 		t.Errorf("compact JSON should serialize entry kind as 'type': %s", data)
 	}
 
@@ -290,7 +290,7 @@ func TestGetByID_ReturnsPointerIntoSlice(t *testing.T) {
 func TestGetByType(t *testing.T) {
 	c := validCatalog(t)
 
-	agents := c.GetByType("application/a2a-agent-card+json")
+	agents := c.GetByType(MediaTypeA2AAgentCard)
 	if len(agents) != 4 || agents[0].Identifier != financeID {
 		t.Errorf("GetByType(agent) = %+v", agents)
 	}

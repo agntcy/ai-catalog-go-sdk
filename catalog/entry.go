@@ -20,8 +20,8 @@ type CatalogEntry struct {
 
 	DisplayName string `json:"displayName,omitempty"`
 
-	// Type is the media type of the artifact;
-	// "application/ai-catalog+json" denotes a nested catalog.
+	// Type is the media type of the artifact. MediaTypeCatalog denotes a
+	// nested catalog; see the MediaType* constants for other recommended types.
 	Type string `json:"type"`
 
 	// URL and Data are mutually exclusive: exactly one must be set.

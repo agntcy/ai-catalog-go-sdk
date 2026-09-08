@@ -31,7 +31,6 @@ const (
 	mediaTypeIndex    = "application/vnd.oci.image.index.v1+json"
 	mediaTypeManifest = "application/vnd.oci.image.manifest.v1+json"
 	mediaTypeEmpty    = "application/vnd.oci.empty.v1+json"
-	mediaTypeCatalog  = "application/ai-catalog+json"
 
 	refNameAnnotation = "org.opencontainers.image.ref.name"
 
@@ -94,7 +93,7 @@ func run(dir string) error {
 		return fmt.Errorf("marshal catalog: %w", err)
 	}
 
-	layer, err := writeBlob(blobs, catalogBytes, mediaTypeCatalog)
+	layer, err := writeBlob(blobs, catalogBytes, catalog.MediaTypeCatalog)
 	if err != nil {
 		return err
 	}
@@ -107,7 +106,7 @@ func run(dir string) error {
 	man := manifest{
 		SchemaVersion: ociSchemaVersion,
 		MediaType:     mediaTypeManifest,
-		ArtifactType:  mediaTypeCatalog,
+		ArtifactType:  catalog.MediaTypeCatalog,
 		Config:        config,
 		Layers:        []descriptor{layer},
 	}
@@ -122,7 +121,7 @@ func run(dir string) error {
 		return err
 	}
 
-	manDesc.ArtifactType = mediaTypeCatalog
+	manDesc.ArtifactType = catalog.MediaTypeCatalog
 	manDesc.Annotations = map[string]string{refNameAnnotation: doc.SpecVersion}
 
 	idx := index{
@@ -179,7 +178,7 @@ func sampleCatalog() *catalog.AICatalog {
 			{
 				Identifier:  "urn:air:acme-corp.com:mcp:weather",
 				DisplayName: "Weather",
-				Type:        "application/mcp-server-card+json",
+				Type:        catalog.MediaTypeMCPServerCard,
 				URL:         "https://acme-corp.com/mcp/weather",
 			},
 		},

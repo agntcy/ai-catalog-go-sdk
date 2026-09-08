@@ -17,14 +17,11 @@ import (
 	"strings"
 )
 
-// MediaTypeCatalog is the media type of a (possibly nested) AI Catalog document.
-const MediaTypeCatalog = "application/ai-catalog+json"
-
 // WellKnownPath is the spec's well-known URI path (RFC 8615) for an AI Catalog.
 const WellKnownPath = "/.well-known/ai-catalog.json"
 
 // AICatalog is the top-level AI Catalog document (media type
-// "application/ai-catalog+json").
+// MediaTypeCatalog).
 type AICatalog struct {
 	// SpecVersion is the AI Catalog spec version this document conforms to,
 	// as "Major.Minor".
