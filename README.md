@@ -69,7 +69,7 @@ if err != nil {
 }
 
 entry, ok := doc.GetByID("urn:air:acme-corp.com:mcp:weather")
-mcpServers := doc.GetByType("application/mcp-server-card+json")
+mcpServers := doc.GetByType(catalog.MediaTypeMCPServerCard)
 hits := doc.Search("weather")
 matched, err := doc.SearchByRegex(`^urn:air:acme-corp\.com:`)
 ```
@@ -80,7 +80,7 @@ The same methods are available on any parsed document, so a `Source` is not requ
 doc, _ := catalog.ParseFile("ai-catalog.json")
 
 entry, ok := doc.GetByID("urn:air:acme-corp.com:mcp:weather")
-agents := doc.GetByType("application/a2a-agent-card+json")
+agents := doc.GetByType(catalog.MediaTypeA2AAgentCard)
 byTag := doc.GetByTag("finance")
 byPublisher := doc.GetByPublisher("did:web:acme-corp.com")
 ```
